@@ -24,33 +24,33 @@ def load_data_small():
     testdata = list(tuple())
     for file in os.listdir(directory_path): 
         path = os.path.join(directory_path, file)
-        image = cv2.imread(path)
+        image = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
         temp = ((image), 1)
         traindata.append(temp)
 
     directory_path = "data/data_small/train/non-face"
     for file in os.listdir(directory_path):
         path = os.path.join(directory_path, file)
-        image = cv2.imread(path)
+        image = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
         temp = ((image), 0)
         traindata.append(temp)
 
     directory_path = "data/data_small/test/face"
     for file in os.listdir(directory_path):
         path = os.path.join(directory_path, file)
-        image = cv2.imread(path)
+        image = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
         temp = ((image), 1)
         testdata.append(temp)
 
     directory_path = "data/data_small/test/non-face"
     for file in os.listdir(directory_path):
         path = os.path.join(directory_path, file)
-        image = cv2.imread(path)
+        image = cv2.imread(path, cv2.IMREAD_GRAYSCALE)
         temp = ((image), 0)
         testdata.append(temp)
     dataset = [traindata, testdata]
 
-    raise NotImplementedError("To be implemented")
+    # raise NotImplementedError("To be implemented") maybe done
 
     # End your code (Part 1-1)
     

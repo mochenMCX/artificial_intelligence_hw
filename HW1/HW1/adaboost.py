@@ -178,7 +178,7 @@ class Adaboost:
                 best_feature = feature
                 besterror = cur_error
         bestClf = WeakClassifier(feature=best_feature)
-        raise NotImplementedError("To be implemented")
+        # raise NotImplementedError("To be implemented") maybe ok
         # End your code (Part 2)
         return bestClf, bestError
 
