@@ -122,18 +122,21 @@ def load_data_FDDB(data_idx="01"):
                 x, w = np.random.randint(img_weight, size=2)
                 y, h = np.random.randint(img_height, size=2)
                 for bound in face_box_list:
-                    if bound[0][0] < x and bound[0][1] < y and bound[1][0] > (x+w) and bound[1][1] > (y+h):
+                    if w==0 or h == 0:
                         overlap = False
                         break
+                    if x > bound[1][0] or (x+w) < bound[0][0] or y > bound[1][1] or (y+h) < bound[0][1]:
+                        overlap=True
                     else:
-                        overlap = True
+                        overlap=False
+                        break
                 if overlap:
                     break
 
             left_top = (max(x, 0), max(y, 0))
             right_bottom = (min(x+w, img_weight), min(y+h, img_height))
             face_box_list.append([left_top, right_bottom]) #avoid two non-face overlap
-            raise NotImplementedError("To be implemented")
+            # raise NotImplementedError("To be implemented")
             img_crop = img_gray[left_top[1] : right_bottom[1], left_top[0]:right_bottom[0]].copy()
             # End your code (Part 1-2)
 

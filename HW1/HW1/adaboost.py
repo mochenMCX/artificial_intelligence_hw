@@ -76,7 +76,7 @@ class Adaboost:
             self.clfs.append(clf)
             print(
                 "Chose classifier: %s with accuracy: %f and alpha: %f"
-                % (str(clf), len(accuracy) - sum(accuracy), alpha)
+                % (str(clf), (len(accuracy) - sum(accuracy))/len(accuracy), alpha)
             )
 
     def buildFeatures(self, imageShape):
@@ -162,8 +162,7 @@ class Adaboost:
         """
         # Begin your code (Part 2)
 
-        feature_count = 0
-        besterror = float('inf')
+        bestError = float('inf')
         best_feature = None
         for f, feature in zip(featureVals, features):
             cur_error = 0
@@ -173,12 +172,11 @@ class Adaboost:
                 else:
                     h=0
                 cur_error += abs(h-labels[i])*weights[i]
-            feature_count+=1
-            if cur_error < besterror:
+            if cur_error < bestError:
                 best_feature = feature
-                besterror = cur_error
+                bestError = cur_error
         bestClf = WeakClassifier(feature=best_feature)
-        # raise NotImplementedError("To be implemented") maybe ok
+        # raise NotImplementedError("To be implemented")
         # End your code (Part 2)
         return bestClf, bestError
 
