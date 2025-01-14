@@ -134,6 +134,9 @@ class MinimaxAgent(MultiAgentSearchAgent):
         Returns whether or not the game state is a losing state
         """
         # Begin your code (Part 1)
+        """
+        In part 1, I define a function called 'value' for recursion. I use 'gameState.getLegalAction(index)' to get a list of this agent's legal moves, and then use a for loop to call the 'value' function recursively. I will use 'getNextState' to convert these legal moves into game states. In the 'value' function, the recursion stops when the current state indicates a win or a loss, or when the specified recursion depth is reached (determined by 'self.depth'). When recursion stops, the function calls 'evaluationFunction(state)' to get the final score and return it. At each depth, every agent moves once, so if the index of the current agent equals the starting index (determined by 'self.index'), the depth increases by one. Each agent retrieves all their legal moves in the same way and recursively calls the 'value' function. If the index of the agent is zero, then the function returns the maximum value among all child states; if the index is not zero, it returns the minimum value.
+        """
         def value(state, dep, idx):
             if state.isWin() or state.isLose():
                 return self.evaluationFunction(state)
@@ -156,7 +159,6 @@ class MinimaxAgent(MultiAgentSearchAgent):
                 else:
                     v = min(v, value(state.getNextState(idx, a), dep, idx))
             return v
-        
         index = self.index
         action = gameState.getLegalActions(index)
         re = action[index]
@@ -180,7 +182,9 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
     """
     Your minimax agent with alpha-beta pruning (Part 2)
     """
-
+    """
+    In this part, most of the logic is similar to part 1. However, in the 'value' function, I add two components called alpha and beta for alpha-beta pruning. When the index equals zero (where we select the maximum), if the return value is greater than alpha, I update the alpha value. If the return value is greater than beta, I stop the recursion and return the value immediately. When the index is not zero (where we select the minimum), if the return value is smaller than beta, I update the beta value. If the return value is smaller than alpha, I stop the recursion and return the value immediately. The initial values for alpha and beta are negative infinity and positive infinity, respectively. The for-loop for the initial state's legal actions also uses the alpha and beta values to determine whether to continue recursion or to prune the remaining branches.
+    """
     def getAction(self, gameState):
         """
         Returns the minimax action using self.depth and self.evaluationFunction
@@ -216,7 +220,6 @@ class AlphaBetaAgent(MultiAgentSearchAgent):
                         return v
                     beta = min(beta, v)
             return v
-        
         index = self.index
         action = gameState.getLegalActions(index)
         re = action[index]
@@ -248,7 +251,9 @@ class ExpectimaxAgent(MultiAgentSearchAgent):
     """
       Your expectimax agent (Part 3)
     """
-
+    """
+    This part is similar to part 1. The difference is that, originally, when the index is not zero, we select the minimum value. In this part, instead of selecting the minimum, we calculate the average value of all legal actions. However, for the initial state's legal actions, if the index of the initial state is not zero, I still choose the minimum value instead of the average because it must return an action.
+    """
     def getAction(self, gameState):
         """
         Returns the expectimax action using self.depth and self.evaluationFunction
@@ -307,6 +312,9 @@ def betterEvaluationFunction(currentGameState):
     """
     Your extreme ghost-hunting, pellet-nabbing, food-gobbling, unstoppable
     evaluation function (Part 4).
+    """
+    """
+    There are three components in my evaluation function: 'score', 'fscore', and 'gscore'. I obtain 'score' directly from the function 'getScore()'. 'fscore' is calculated based on the distance to the nearest food pellet. The formula is '10 / distance + 8', since a shorter distance to food indicates a higher score potential. 'gscore' is calculated based on the scared time and the distance to the nearest ghost. If the scared time is greater than 0, 'gscore' increases by '300 / distance' if the scared time is over 10, or '150 / distance' if the scared time is 10 or less. If the scared time is 0, 'gscore' decreases by '-15 / distance'. This approach reflects that Pacman should capture ghosts when they're scared and avoid them when they're not. The final score is the sum of 'score', 'fscore', and 'gscore'.
     """
     # Begin your code (Part 4)
     position = currentGameState.getPacmanPosition()     #get the position now

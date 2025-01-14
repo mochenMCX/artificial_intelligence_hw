@@ -1,0 +1,20 @@
+There are 5 cows, 10 cattle in the farm.
+Each cow needs 5 kg food, and cattle need 3 kg every day.
+You are the farmer in the farm. Which option you can choose to feed up all animals in n days and don't need to prepare additional food(n is an integer)?
+55 kg
+45 kg
+110 kg
+550 kg
+
+There are 5 cows, 10 cattle in the farm.
+Each cow needs 5 kg food, and cattle need 3 kg every day.
+You are the farmer in the farm. Which option you can choose to feed up all animals in n days and don't need to prepare additional food(n is an integer)?
+55 kg
+45 kg
+110 kg
+550 kg
+
+for example:
+If you have 1100kg food, you can feed all animals for 11 days:
+5 * 5 + 10 * 3 = 55, 1100/55 = 11(integer)
+Therefore, 1100kg is one of the answer.

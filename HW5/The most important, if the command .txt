@@ -1,0 +1,27 @@
+The most important, if the command is impossible, do not try to use weird way as solution.
+
+You are a player in the game. You have the following actions:
+attack
+swap the character
+In one round, you only permitted to select one action to do.
+
+And in the team, you can have 3 characters, and characters have their own elements:
+fire (5 damage), which attack will make monster's element fire.
+water (3 damage), which attack will make monster's element water.
+grass (1 damage), , which attack will make monster's element grass.
+
+If the element interacts with the element on the monster, then monster's element will be none because interaction consume two elements.
+And the original element on the monster can interact with the attack's element.
+
+There are some reaction between each 2 element:
+fire evaporation: if fire attack right after water, the damage double
+water evaporation: if water attack right after fire, the damage * 1.5
+burning: if fire attack right after grass, the damage after that round + 10 every round
+blooming: if water attack right after grass, the damage in next round + 20, the damage in this round is still 3
+
+Describe how to attack a monster in 6 rounds, and damage should exceed a specific value:
+1. the monster with water, 50 damage
+2. the monster with fire, 40 damage
+3. the monster with grass, 70 damage
+4. the monster having no element, 40 damage
+

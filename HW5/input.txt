@@ -1,0 +1,20 @@
+You are a player in the game. You have the following actions:
+attack
+swap the character
+
+And in the team, you can have 3 characters, and characters have their own elements:
+fire(5 damage)
+water(3 damage)
+grass(1 damage)
+
+There are some reaction between each 2 element:
+fire evaporation: if fire attack right after the water attack, the damage double
+water evaporation: if water attack right after the fire attack, the damage * 1.5
+burning: if fire attack right after the grass attack, the damage after that round + 10 every round
+blooming: if water attack right after the grass attack, the damage + 20
+
+Describe how to attack a monster in 6 rounds, and damage should exceed a specific value:
+1. 50 damage
+2. 30 damage
+3. 70 damage
+4. 20 damage
